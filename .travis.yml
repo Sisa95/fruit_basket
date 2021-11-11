@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - 12
 env:
-  - 'DATABASE_URL=postgresql://postgres@localhost:5432/fruit'
+  - 'DATABASE_URL=postgresql://postgres@localhost:5432/fruits'
 before_script:
   - npm install
   - psql -c 'create database  fruit_basket;' -U postgres

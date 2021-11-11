@@ -18,19 +18,16 @@ describe('Fruit Basket', function () {
 
     it('should be able to insert fruit, quantity and the unit price of the fruit', async function () {
 
-        beforeEach(async function () {
-            const basket = Fruits_Basket(pool);
-            await basket.inserttingFruit('pineapple', 9, 15)
+        const basket = Fruits_Basket(pool);
+        await basket.inserttingFruit('pineapple', 9, 15)
 
-            let fruit_type = await basket.getFruitBasket()
+        let fruit_type = await basket.getFruitBasket()
 
-            assert.deepEqual([{
-                "fruit_type": "pineapple",
-                "quantity": 9,
-                "unit_price": 15
-            }], fruit_type)
-    
-        });
+        assert.deepEqual([{
+            "fruit_type": "pineapple",
+            "quantity": 9,
+            "unit_price": 15
+        }], fruit_type)
     });
 
     it('should be able to show all types of fruits in the fruit basket', async function () {
