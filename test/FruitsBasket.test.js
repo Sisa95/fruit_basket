@@ -13,7 +13,7 @@ describe('Fruit Basket', function () {
 
 
     beforeEach(async function () {
-        await pool.query("delete from fruits;");
+        await pool.query("delete from fruit_basket");
     });
 
     it('should be able to insert fruit, quantity and the unit price of the fruit', async function () {
