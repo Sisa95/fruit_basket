@@ -81,10 +81,10 @@ describe('Fruit Basket', function () {
         await basket.inserttingFruit('mango', 12, 18.42)
         await basket.inserttingFruit('pineapple', 9, 15)
 
-        let totalPrice = await basket.updateFruitBasket('pineapple')
+        let totalPrice = await basket.updateFruitBasket('pineapple',3)
 
         assert.deepEqual([{
-            quantity: 10
+            quantity: 12
         }], totalPrice)
     });
 

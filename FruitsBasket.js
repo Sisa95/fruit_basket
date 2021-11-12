@@ -40,9 +40,9 @@ module.exports = function Fruits_Basket(pool) {
         }
     }
 
-    async function updateFruitBasket(fruit_type) {
+    async function updateFruitBasket(fruit_type, newStock) {
        try{
-            await pool.query(`UPDATE fruit_basket SET quantity = (quantity + 1) WHERE fruit_type = $1`, [fruit_type])
+            await pool.query(`UPDATE fruit_basket SET quantity = (quantity + ${newStock}) WHERE fruit_type = $1`, [fruit_type])
             let updateBasket = await pool.query('select quantity from fruit_basket where fruit_type = $1',[fruit_type])
             return updateBasket.rows
 
@@ -52,8 +52,8 @@ module.exports = function Fruits_Basket(pool) {
 
     async function getTotal() {
         try {
-            let x = await pool.query('SELECT SUM(unit_price) FROM fruit_basket') 
-            return x.rows
+            let fruit_basketSum = await pool.query('SELECT SUM(unit_price) FROM fruit_basket') 
+            return fruit_basketSum.rows
 
         } catch (error) { console.log(error)
         }
